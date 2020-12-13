@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Payment Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/validation.js">
+    </script>
+</head>
+<body style="background-color: rgb(243, 240, 240);">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Payment Form</a></li>
+        </ol>
+      </nav>
+
+    <!--Heading-->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h2 class="py-4">Add payment information</h2>
+            </div>
+        </div>    
+    </div>
+
+    <!--Contenedor con el formulario-->
+    <div class="container">
+        <form onsubmit="return validate()" action="exito.html">
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="name">Name and Surname</label>
+                    <input type="text" class="form-control" placeholder="Required" id="nom" minlength="2" required>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" minlength="10" placeholder="Required" required>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col col-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" minlength="5" placeholder="Required" required>
+                </div>
+                <div class="col col-6">
+                    <label for="post">Postal Code</label>
+                    <input type="text" class="form-control" id="post" placeholder="Required" required> 
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col col-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Required" required> 
+                </div>
+            </div>
+
+            <div class="form-row form-group" id="payment-method">
+                <div class="col">
+                    <p>Payment Method: </p>
+                    <div class="form-row">
+                        <div class="col">
+                        <input type="radio" id="paypal" name="payment" value="paypal" onclick='activateCardFields()'>
+                            <label for="paypal">PayPal</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" id="mastercard" name="payment" value="mastercard" onclick='activateCardFields()'>
+                            <label for="mastercard">MasterCard</label>
+                        </div>
+                        <div class="col">
+                        <input type="radio" id="visa" name="payment" value="visa" onclick='activateCardFields()'>
+                            <label for="visa">Visa</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group ">
+                <div class="col col-8 form-card">
+                    <label for="ntarjeta">Card Number</label>
+                    <input type="text" class="form-control" id="card" onfocus='validatePaymentMethod()' onfocusout='validateCard();' placeholder="XXXX-XXXX-XXXX-XXXX"><h4 id="esOK" style="color:Green"></h4>
+                        <div><h6 id="visa_error" style="color: #f00;"></h6></div>
+                        <div><h6 id="mastercard_error" style="color: #f00;"></h6></div>
+                        <small>Use '-' to separate the numbers. Spaces not allowed.</small>
+                </div>
+                <div class="col col-4">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" maxlength="3" onfocusout="validateCVV()">
+                    <div><p id="cvv_error" style="color: #f00;"></p></div>
+                    <img class="pt-2 mx-auto d-block" src="images/cvv.png" alt="cvv"  width="120px">
+                    
+                </div>
+            
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="spain">Spain</option>
+                        <option value="france">France</option>
+                        <option value="poland">Poland</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="form-row form-check">
+                <div class="col">
+                <input type="checkbox" class="form-check-input" id="terms-cond">
+                <label class="form-check-label" for="terms-cond" id='terms-cond-label'>I have read and accept the conditions.</label>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class="col d-flex justify-content-center m-3">
+                    <button class="btn btn-primary btn-lg" style="background-color: rgb(230, 155, 17); border-color: rgb(63, 23, 100);" type="submit">Registrarse</button>
+                </div>
+            </div>
+        </form>
+
+</body>
+</html>
